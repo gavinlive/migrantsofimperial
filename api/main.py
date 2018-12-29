@@ -7,6 +7,8 @@ from flask_pymongo import PyMongo
 
 from src.models.game import load_game
 
+from src.lib.authentication import is_valid_game_token
+
 # initialize instance of WSGI application
 # act as a central registry for the view functions, URL rules, template configs
 app = Flask(__name__)
@@ -25,6 +27,11 @@ def index():
 @app.route('/game/')
 @app.route('/game/<token>')
 def load_game(token=None):
-    if(token==None):
+    if(token is None or is_valid_game_token(token) is False):
         raise WebError('Please enter a valid token')
+    pass
+
+@app.route('/game/<token>/state')
+def get_game_state(token=None):
+
     return render_template('game.html', token=token)
