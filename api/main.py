@@ -3,15 +3,25 @@
 
 
 from flask import Flask, render_template
+
+# initialize instance of WSGI application
+# act as a central registry for the view functions, URL rules, template configs
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hey, we have Flask in a Docker containers! testing!'
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
+
+'''
 from flask_pymongo import PyMongo
 
 from src.models.game import load_game
 
 from src.lib.authentication import is_valid_game_token
-
-# initialize instance of WSGI application
-# act as a central registry for the view functions, URL rules, template configs
-app = Flask(__name__)
 
 ## include db name in URI; _HOST entry overwrites all others
 app.config['MONGODB_HOST'] = 'mongodb://localhost:27017/settlersofcatan'
@@ -35,3 +45,4 @@ def load_game(token=None):
 def get_game_state(token=None):
 
     return render_template('game.html', token=token)
+'''
