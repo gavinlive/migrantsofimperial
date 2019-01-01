@@ -33,5 +33,9 @@ def load_game(token=None):
 
 @app.route('/game/<token>/state')
 def get_game_state(token=None):
-
     return render_template('game.html', token=token)
+
+
+@app.route('/game/<token>/robberposition'):
+def get_robber_position(token=None):
+    return render_template('robber_position.html', token=token)
