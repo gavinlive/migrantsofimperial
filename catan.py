@@ -12,44 +12,79 @@ class Game():
     def initialize_board():
         return something::GameBoard
 
-    def is_road_legal(board,road.coords, player):
-        for ddx in [(-1, -1), (0, 0),(1,-1)]:
-            for ddy in [(-1, 0), (0, 0), (1, 0)]:
-                if (i !=(0,0) or j!=(0,0)):
-                   (dx,dy)=road.coords
-                    if roads.(np.add(dx,ddx), np.add(dy,ddx))!=0:
-                        return True
-                    else:
-                        print("This is not a legal move")
-                        return False
+    def Trade_cards(player,board):
+
+
+    def is_road_nearby (player, road.coords):
+        #DOES NOT WORK FOR BOARD EDGES YET
+        (dx,dy)=road.coords
+        direc=[(-1, +1),(1, 0),(-1, 0), (1, -1)]
+        while road.coords(newx,newy)==0:
+            if road.coords < board_edge(road.coords):
+                print('Outside board framework')
+                return False
+            for ddx in direc:
+                if direc.index(ddx)>1:
+                    (newx,newy)=(dx, tuple(np.add(dy,ddx)))
+                else: 
+                    (newx,newy)=(tuple(np.add(dx,ddx)), dy)
+        return True
+
+    def is_road_legal(board, road.coords, settlement.coords, player):
+        
+        #If Trade_cards(player, wood)==True:
+        #   pass
+
+        def is_settlement_nearby (player, settlement.coords):
+            #DOES NOT WORK FOR BOARD EDGES YET
+            (dx,dy)=road.coords
+            if dx and dy in settlement.coords:
+                return True
+            return False
+
+        if is_road_nearby(road.coords)==True or is_settlement_nearby (settlement.coords):
+            return True 
 
     def add_road(board,road.coords, player):
         if is_road_legal(board,road.coords, player):
-            road.coords.append(road.coords)
+            #For the players road.coords add the new road.coords
+            #CHECK SYNTAX
+            player.road.coords.append(road.coords)
 
     def is_settlement_legal(settlement.coords):
         if settlement.coords!=0:
+            print('this location is unavailable')
             return False
-        if is_settlement_legal_in_direction(settlement.coords):
+        else if settlement.coords<board_edge(settlement.coords):
+            print('Outside board framework')
+            return False
+        else if is_settlement_legal_in_direction(settlement.coords):
             return True
             
     def is_settlement_legal_in_direction(settlement.coords):
+        
+        def is_settlement_nearby(player, settlement.coords):            
+            for i in player.settlement.coords:
+                i=set(i)
+                j=set(settlement.coords)
+                if len(i.difference(j))<2:
+                    return True
+            return False
 
+        def surrounding_road_length(player, settlement.coords):
+            if 
 
-        #if vertice has at least two roads of player roads
-            #return True
-        #if vertice is populated as house, +input is upgrade to city
-            #return True
+        if is_settlement_nearby==False and surrounding_road_length>1:
+            return True
     
+    def add_settlement(board):
+        #adding settlement to the board
+
+    def settlement_resources(player,board):
+        
     def add_settlement(settlement.coords):
 
         
-        for dir in range(3):
-            (drow,dcol) = dirs[dir]
-            i = 1
-            while True: #while it is not on the edge
-                row = startRow + i*drow
-                col = startCol + i*dcol
     def longest_road(board):
 
 
